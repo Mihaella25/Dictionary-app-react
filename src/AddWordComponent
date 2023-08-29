@@ -1,0 +1,27 @@
+import React, { useState } from 'react';
+
+function AddWordComponent({ onAddWord }) {
+  const [newWord, setNewWord] = useState('');
+
+  const handleAddClick = () => {
+    if (newWord.trim() !== '') {
+      onAddWord(newWord);
+      setNewWord('');
+    }
+  };
+
+  return (
+    <div>
+      <input
+        className="TextInputSection"
+        type="text"
+        placeholder="Add a new word"
+        value={newWord}
+        onChange={(e) => setNewWord(e.target.value)}
+      />
+      <button className="Button ButtonMargin" onClick={handleAddClick}>Add</button>
+    </div>
+  );
+}
+
+export default AddWordComponent;
