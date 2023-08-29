@@ -1,0 +1,32 @@
+import React, { useState } from 'react';
+
+function SearchWordComponent({ dictionary }) {
+  const [searchTerm, setSearchTerm] = useState('');
+  const [searchResult, setSearchResult] = useState('');
+
+  const handleSearchClick = () => {
+    const wordExists = !!dictionary[searchTerm];
+    setSearchResult(wordExists ? 'Word exists in the dictionary' : 'Word not found');
+  };
+
+  const handleInputChange = (e) => {
+    setSearchTerm(e.target.value);
+    setSearchResult('');
+  };
+
+  return (
+    <div>
+      <input
+        className="TextInputSection"
+        type="text"
+        placeholder="Search for a word"
+        value={searchTerm}
+        onChange={handleInputChange}
+      />
+      <button className="Button" onClick={handleSearchClick}>Search</button>
+      <div>{searchResult}</div>
+    </div>
+  );
+}
+
+export default SearchWordComponent;
